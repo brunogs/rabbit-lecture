@@ -18,7 +18,7 @@ public class AmqpConfigFanoutSender {
     InitializingBean setupQueues(AmqpAdmin amqpAdmin) {
         return () -> {
 
-            FanoutExchange fanoutExchange = new FanoutExchange(Exchanges.CACHE_REFRESH, DURABLE, AUTO_DELETE);
+            FanoutExchange fanoutExchange = new FanoutExchange(Exchanges.CACHE_UPDATE, DURABLE, AUTO_DELETE);
             amqpAdmin.declareExchange(fanoutExchange);
 
         };

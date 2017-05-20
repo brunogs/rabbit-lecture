@@ -25,7 +25,7 @@ public class FanoutPublisher {
     @Scheduled(fixedDelay = 5000)
     public void sendDirectMessages() {
 
-        String exchangeName = Exchanges.CACHE_REFRESH;
+        String exchangeName = Exchanges.CACHE_UPDATE;
 
         log.info("notify cache.refresh");
         range(0, 200).forEach(sku ->
