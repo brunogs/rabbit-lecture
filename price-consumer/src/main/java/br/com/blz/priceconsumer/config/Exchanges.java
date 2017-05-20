@@ -1,6 +1,6 @@
-package br.com.blz.productconsumer.config;
+package br.com.blz.priceconsumer.config;
 
-public class Exchanges {
+class Exchanges {
 
     static final String PRODUCT_UPDATE = "product.update";
     static final String CACHE_UPDATE = "cache.update";

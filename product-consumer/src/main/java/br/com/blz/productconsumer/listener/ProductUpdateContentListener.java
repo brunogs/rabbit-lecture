@@ -1,20 +1,25 @@
 package br.com.blz.productconsumer.listener;
 
-import br.com.blz.productconsumer.config.Queues;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+import static br.com.blz.productconsumer.config.Queues.PRODUCT_UPDATE_CONTENT;
+
+@Slf4j
 @Component
+@Profile("direct")
 public class ProductUpdateContentListener {
 
-    @RabbitListener(queues = Queues.PRODUCT_UPDATE_CONTENT)
+    @RabbitListener(queues = PRODUCT_UPDATE_CONTENT)
     public void onUpdateContent(String message) throws InterruptedException {
 
-        System.out.println("event=update_content");
+        log.info("event=update_content");
 
         Thread.sleep(1000);
 
-        System.out.println("updated resource=" + message);
+        log.info("updated resource=" + message);
     }
 
 }
