@@ -1,4 +1,4 @@
-package br.com.blz.productconsumer;
+package br.com.blz.productconsumer.config;
 
 public class Queues {
 

@@ -20,8 +20,9 @@ public class SimplePublisher {
     @Scheduled(fixedDelay = 1000)
     public void sendDirectMessages() {
         System.out.println("Sending updates to direct exchange");
-        range(0, 30).forEach(sku -> {
-                rabbitTemplate.convertAndSend(Exchanges.PRODUCT_UPDATE, "product.update.content", "sku");
+
+        range(0, 500).forEach(sku -> {
+                rabbitTemplate.convertAndSend(Exchanges.PRODUCT_UPDATE, "product.update.content", "sku:" + sku);
         });
     }
 }
