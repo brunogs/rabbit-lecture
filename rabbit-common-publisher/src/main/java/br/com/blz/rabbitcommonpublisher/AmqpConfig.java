@@ -8,13 +8,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class AmpqConfig {
+public class AmqpConfig {
+
+    private static final boolean DURABLE = false;
+    private static final boolean AUTO_DELETE = true;
 
     @Bean
     InitializingBean setupQueues(AmqpAdmin amqpAdmin) {
         return () -> {
 
-            Exchange exchange = new DirectExchange(Exchanges.PRODUCT_UPDATE);
+            Exchange exchange = new DirectExchange(Exchanges.PRODUCT_UPDATE, DURABLE, AUTO_DELETE);
             amqpAdmin.declareExchange(exchange);
 
         };
