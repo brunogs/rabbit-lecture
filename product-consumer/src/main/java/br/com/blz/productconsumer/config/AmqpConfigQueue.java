@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 @Configuration
-@Profile("only-queue")
+@Profile("simple")
 public class AmqpConfigQueue {
 
     private static final boolean DURABLE = false;

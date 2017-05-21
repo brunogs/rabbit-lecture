@@ -9,7 +9,7 @@ import static br.com.blz.productconsumer.config.Queues.PRODUCT_UPDATE_CONTENT;
 
 @Slf4j
 @Component
-@Profile("direct")
+@Profile({"direct", "simple-binding"})
 public class ProductUpdateContentListener {
 
     @RabbitListener(queues = PRODUCT_UPDATE_CONTENT)

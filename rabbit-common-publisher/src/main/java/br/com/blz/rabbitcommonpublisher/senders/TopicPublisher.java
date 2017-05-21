@@ -27,9 +27,9 @@ public class TopicPublisher {
 
         String exchangeName = Exchanges.ORDER_CREATE;
 
-        String routingKey = "new.order.create";
+        //String routingKey = "new.order.create";
         //String routingKey = "order.create.resend";
-        //String routingKey = "new.order.create.offer";
+        String routingKey = "new.order.create.offer";
 
         log.info("notify " + routingKey);
         range(0, 10).forEach(sku ->
