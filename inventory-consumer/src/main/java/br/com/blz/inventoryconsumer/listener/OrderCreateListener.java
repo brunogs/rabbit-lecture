@@ -1,25 +1,21 @@
 package br.com.blz.inventoryconsumer.listener;
 
+import br.com.blz.inventoryconsumer.config.Queues;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-import static br.com.blz.inventoryconsumer.config.Queues.CACHE_UPDATE;
-
 
 @Slf4j
 @Component
-@Profile("fanout")
-public class CacheUpdateListener {
+@Profile("topic")
+public class OrderCreateListener {
 
-    @RabbitListener(queues = CACHE_UPDATE)
-    public void onCacheUpdate(String message) throws InterruptedException {
-
-        log.info("event=cache_update in inventory");
-
+    @RabbitListener(queues = Queues.ORDER_CREATE)
+    public void onOrderCreate(String message) throws InterruptedException {
+        log.info("event=order_create in inventory");
         Thread.sleep(100);
-
         log.info("updated resource=" + message);
     }
 

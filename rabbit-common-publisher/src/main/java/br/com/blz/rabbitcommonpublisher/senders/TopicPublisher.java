@@ -11,28 +11,32 @@ import org.springframework.stereotype.Component;
 import static java.util.stream.IntStream.range;
 
 @Component
-@Profile("fanout")
+@Profile("topic")
 @Slf4j
-public class FanoutPublisher {
+public class TopicPublisher {
 
     private RabbitTemplate rabbitTemplate;
 
     @Autowired
-    public FanoutPublisher(RabbitTemplate rabbitTemplate) {
+    public TopicPublisher(RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
     }
 
     @Scheduled(fixedDelay = 5000)
-    public void sendFanoutMessages() {
+    public void sendTopicMessages() {
 
-        String exchangeName = Exchanges.CACHE_UPDATE;
+        String exchangeName = Exchanges.ORDER_CREATE;
 
-        log.info("notify cache.update");
+        String routingKey = "new.order.create";
+        //String routingKey = "order.create.resend";
+        //String routingKey = "new.order.create.offer";
+
+        log.info("notify " + routingKey);
         range(0, 10).forEach(sku ->
 
                 rabbitTemplate.convertAndSend(
                         exchangeName,
-                        "",
+                        routingKey,
                         "sku:" + sku
                 )
         );

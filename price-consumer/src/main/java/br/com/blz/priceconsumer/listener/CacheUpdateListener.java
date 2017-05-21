@@ -16,7 +16,7 @@ public class CacheUpdateListener {
     @RabbitListener(queues = CACHE_UPDATE)
     public void onCacheUpdate(String message) throws InterruptedException {
 
-        log.info("event=cache_update");
+        log.info("event=cache_update in price");
 
         Thread.sleep(100);
 
