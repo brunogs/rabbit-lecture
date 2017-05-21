@@ -31,6 +31,12 @@ public class RPCPublisher {
                 "123"
         );
 
+        /*rabbitTemplate.convertAndSend(
+                Exchanges.ORDER_PAYMENT,
+                "pay",
+                "123"
+        );*/
+
         log.info("result: {}", result);
 
     }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-@Profile("topic")
+@Profile({"topic", "rpc"})
 public class OrderCreateListener {
 
     @RabbitListener(queues = Queues.ORDER_CREATE)

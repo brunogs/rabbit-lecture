@@ -15,7 +15,7 @@ import static org.springframework.amqp.core.BindingBuilder.bind;
 
 @SuppressWarnings("Duplicates")
 @Configuration
-@Profile("topic")
+@Profile({"topic", "rpc"})
 public class AmqpConfigTopic {
 
     private static final boolean DURABLE = false;
